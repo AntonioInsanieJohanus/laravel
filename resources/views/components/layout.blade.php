@@ -85,65 +85,109 @@
 <body>
 
     {{-- NAVBAR --}}
-    <nav class="navbar navbar-expand-lg navbar-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top py-3">
 
-        <div class="container">
+    <div class="container">
 
-            {{-- Logo --}}
-            <a class="navbar-brand" href="/">
-                🎓 SI Fakultas
-            </a>
+        {{-- LOGO --}}
+        <a class="navbar-brand fw-bold d-flex align-items-center gap-2"
+           href="/">
 
-            {{-- Toggle --}}
-            <button class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav">
+            <div class="bg-primary rounded-3 d-flex justify-content-center align-items-center shadow"
+                 style="width:40px;height:40px;font-size:18px;">
 
-                <span class="navbar-toggler-icon"></span>
-
-            </button>
-
-            {{-- Menu --}}
-            <div class="collapse navbar-collapse" id="navbarNav">
-
-                <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/">
-                            Home
-                        </a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/fakultas">
-                            Fakultas
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route("prodi.index") }}">
-                            Prodi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route("prodi.create") }}">
-                            + tambah Prodi
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/fakultas/create"
-                           class="btn btn-warning text-white px-4">
-                            + Tambah fakultas
-                        </a>
-                    </li>
-
-                </ul>
+                🎓
 
             </div>
 
+            <span class="fs-4">
+                Sistem<br>Universitas
+            </span>
+
+        </a>
+
+        {{-- TOGGLE --}}
+        <button class="navbar-toggler border-0 shadow-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        {{-- MENU --}}
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-2 mt-4 mt-lg-0">
+
+                {{-- HOME --}}
+                <li class="nav-item">
+
+                    <a class="nav-link nav-hover px-3"
+                       href="/">
+
+                        🏠 Home
+
+                    </a>
+
+                </li>
+
+                {{-- FAKULTAS --}}
+                <li class="nav-item">
+
+                    <a class="nav-link nav-hover px-3"
+                       href="/fakultas">
+
+                        🏢 Fakultas
+
+                    </a>
+
+                </li>
+
+                {{-- PRODI --}}
+                <li class="nav-item">
+
+                    <a class="nav-link nav-hover px-3"
+                       href="{{ route('prodi.index') }}">
+
+                        📘 Prodi
+
+                    </a>
+
+                </li>
+
+                {{-- TAMBAH PRODI --}}
+                <li class="nav-item">
+
+                    <a href="{{ route('prodi.create') }}"
+                       class="btn btn-info text-white rounded-pill px-4 py-2 shadow-sm fw-semibold">
+
+                        ➕ Tambah Prodi
+
+                    </a>
+
+                </li>
+
+                {{-- TAMBAH FAKULTAS --}}
+                <li class="nav-item">
+
+                    <a href="/fakultas/create"
+                       class="btn btn-warning text-dark rounded-pill px-4 py-2 shadow fw-semibold">
+
+                        🚀 Tambah Fakultas
+
+                    </a>
+
+                </li>
+
+            </ul>
+
         </div>
 
-    </nav>
+    </div>
+
+</nav>
 
 
     {{-- CONTENT --}}

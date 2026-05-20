@@ -1,55 +1,89 @@
 <x-layout>
 
     {{-- HERO SECTION --}}
-    <section class="bg-primary bg-gradient text-white py-5 overflow-hidden">
+    <section class="position-relative overflow-hidden bg-dark text-white">
 
-        <div class="container">
+        <div class="container py-5">
 
-            <div class="row align-items-center min-vh-75">
+            <div class="row align-items-center min-vh-100">
 
-                {{-- Text --}}
+                {{-- LEFT CONTENT --}}
                 <div class="col-lg-6">
 
-                    <span class="badge bg-light text-primary px-3 py-2 rounded-pill mb-3">
-                        🎓 Sistem Informasi Akademik
+                    <span class="badge bg-primary-subtle text-primary px-4 py-2 rounded-pill mb-4 fw-semibold">
+                        SISTEM UNIVERSITAS
                     </span>
 
-                    <h1 class="display-3 fw-bold mb-4">
-                        Kelola Data Fakultas
-                        <span class="text-warning">
-                            Lebih Mudah
+                    <h1 class="display-3 fw-bold lh-sm mb-4">
+                        Platform Modern
+                        <span class="text-primary">
+                            Manajemen Universitas
                         </span>
                     </h1>
 
-                    <p class="lead text-light mb-4">
-                        Platform modern untuk mengelola data fakultas,
-                        dekan, dan informasi akademik universitas secara
-                        cepat, aman, dan profesional.
+                    <p class="lead text-light-emphasis mb-5" style="max-width: 600px;">
+                        Kelola data fakultas, dekan, staff akademik,
+                        dan informasi universitas secara profesional,
+                        aman, dan terintegrasi dalam satu sistem modern.
                     </p>
 
                     <div class="d-flex flex-wrap gap-3">
 
                         <a href="/fakultas"
-                           class="btn btn-light btn-lg rounded-4 px-4 shadow">
-                            📚 Lihat Fakultas
+                           class="btn btn-primary btn-lg rounded-4 px-4 shadow">
+                            Lihat Fakultas
                         </a>
 
                         <a href="/fakultas/create"
-                           class="btn btn-warning btn-lg rounded-4 px-4 shadow text-white">
-                            ➕ Tambah Fakultas
+                           class="btn btn-outline-light btn-lg rounded-4 px-4">
+                            Tambah Fakultas
                         </a>
+
+                    </div>
+
+                    {{-- STATS --}}
+                    <div class="row mt-5 g-4">
+
+                        <div class="col-4">
+                            <h2 class="fw-bold text-primary">20+</h2>
+                            <small class="text-secondary">
+                                Fakultas
+                            </small>
+                        </div>
+
+                        <div class="col-4">
+                            <h2 class="fw-bold text-primary">5000+</h2>
+                            <small class="text-secondary">
+                                Mahasiswa
+                            </small>
+                        </div>
+
+                        <div class="col-4">
+                            <h2 class="fw-bold text-primary">24/7</h2>
+                            <small class="text-secondary">
+                                Sistem Online
+                            </small>
+                        </div>
 
                     </div>
 
                 </div>
 
-                {{-- Illustration --}}
+                {{-- RIGHT IMAGE --}}
                 <div class="col-lg-6 text-center mt-5 mt-lg-0">
 
-                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
-                         class="img-fluid"
-                         style="max-height: 420px;"
-                         alt="University">
+                    <div class="position-relative">
+
+                        <div class="position-absolute top-50 start-50 translate-middle bg-primary rounded-circle opacity-25"
+                             style="width:400px;height:400px;">
+                        </div>
+
+                        <img src="https://cdn-icons-png.flaticon.com/512/4207/4207253.png"
+                             class="img-fluid position-relative"
+                             style="max-height: 500px;"
+                             alt="Academic System">
+
+                    </div>
 
                 </div>
 
@@ -63,41 +97,46 @@
     {{-- FEATURES --}}
     <section class="py-5 bg-light">
 
-        <div class="container">
+        <div class="container py-5">
 
             <div class="text-center mb-5">
 
-                <h2 class="fw-bold display-6">
-                    Kenapa Menggunakan Sistem Ini?
+                <span class="text-primary fw-semibold">
+                    FITUR UNGGULAN
+                </span>
+
+                <h2 class="fw-bold display-5 mt-2">
+                    Solusi Akademik Profesional
                 </h2>
 
-                <p class="text-muted">
-                    Solusi modern untuk manajemen fakultas universitas
+                <p class="text-muted mt-3">
+                    Sistem modern yang dirancang untuk meningkatkan
+                    efisiensi pengelolaan universitas
                 </p>
 
             </div>
 
             <div class="row g-4">
 
-                {{-- Feature 1 --}}
-                <div class="col-md-4">
+                {{-- FEATURE 1 --}}
+                <div class="col-lg-4">
 
-                    <div class="card border-0 shadow-lg h-100 rounded-4">
+                    <div class="card border-0 shadow-sm rounded-5 h-100">
 
-                        <div class="card-body text-center p-5">
+                        <div class="card-body p-5">
 
-                            <div class="bg-primary text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-4"
-                                 style="width:80px;height:80px;font-size:35px;">
+                            <div class="bg-primary bg-gradient text-white rounded-4 d-inline-flex align-items-center justify-content-center mb-4"
+                                 style="width:70px;height:70px;font-size:30px;">
                                 ⚡
                             </div>
 
-                            <h4 class="fw-bold">
-                                Cepat & Modern
+                            <h4 class="fw-bold mb-3">
+                                Performa Cepat
                             </h4>
 
-                            <p class="text-muted">
-                                Tampilan profesional dengan performa cepat
-                                untuk pengelolaan data akademik.
+                            <p class="text-muted mb-0">
+                                Sistem responsif dengan teknologi modern
+                                untuk mempercepat pengelolaan data akademik.
                             </p>
 
                         </div>
@@ -106,25 +145,25 @@
 
                 </div>
 
-                {{-- Feature 2 --}}
-                <div class="col-md-4">
+                {{-- FEATURE 2 --}}
+                <div class="col-lg-4">
 
-                    <div class="card border-0 shadow-lg h-100 rounded-4">
+                    <div class="card border-0 shadow-sm rounded-5 h-100">
 
-                        <div class="card-body text-center p-5">
+                        <div class="card-body p-5">
 
-                            <div class="bg-success text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-4"
-                                 style="width:80px;height:80px;font-size:35px;">
+                            <div class="bg-success bg-gradient text-white rounded-4 d-inline-flex align-items-center justify-content-center mb-4"
+                                 style="width:70px;height:70px;font-size:30px;">
                                 🔒
                             </div>
 
-                            <h4 class="fw-bold">
-                                Aman
+                            <h4 class="fw-bold mb-3">
+                                Keamanan Data
                             </h4>
 
-                            <p class="text-muted">
-                                Data tersimpan dengan aman menggunakan
-                                framework Laravel modern.
+                            <p class="text-muted mb-0">
+                                Menggunakan framework Laravel modern
+                                dengan sistem keamanan terpercaya.
                             </p>
 
                         </div>
@@ -133,25 +172,25 @@
 
                 </div>
 
-                {{-- Feature 3 --}}
-                <div class="col-md-4">
+                {{-- FEATURE 3 --}}
+                <div class="col-lg-4">
 
-                    <div class="card border-0 shadow-lg h-100 rounded-4">
+                    <div class="card border-0 shadow-sm rounded-5 h-100">
 
-                        <div class="card-body text-center p-5">
+                        <div class="card-body p-5">
 
-                            <div class="bg-warning text-white rounded-circle d-inline-flex justify-content-center align-items-center mb-4"
-                                 style="width:80px;height:80px;font-size:35px;">
+                            <div class="bg-warning bg-gradient text-white rounded-4 d-inline-flex align-items-center justify-content-center mb-4"
+                                 style="width:70px;height:70px;font-size:30px;">
                                 📊
                             </div>
 
-                            <h4 class="fw-bold">
-                                Mudah Digunakan
+                            <h4 class="fw-bold mb-3">
+                                Dashboard Modern
                             </h4>
 
-                            <p class="text-muted">
-                                Interface sederhana dan intuitif untuk
-                                semua pengguna kampus.
+                            <p class="text-muted mb-0">
+                                Tampilan intuitif dan profesional
+                                yang mudah digunakan seluruh civitas kampus.
                             </p>
 
                         </div>
@@ -167,74 +206,77 @@
     </section>
 
 
-    {{-- STATISTICS --}}
+    {{-- ABOUT SECTION --}}
     <section class="py-5">
 
-        <div class="container">
+        <div class="container py-5">
 
-            <div class="row text-center g-4">
+            <div class="row align-items-center g-5">
 
-                <div class="col-md-3">
+                <div class="col-lg-6">
 
-                    <div class="card border-0 shadow rounded-4 p-4">
-
-                        <h1 class="fw-bold text-primary">
-                            20+
-                        </h1>
-
-                        <p class="text-muted mb-0">
-                            Fakultas
-                        </p>
-
-                    </div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                         class="img-fluid"
+                         alt="University">
 
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-lg-6">
 
-                    <div class="card border-0 shadow rounded-4 p-4">
+                    <span class="text-primary fw-semibold">
+                        TENTANG SISTEM
+                    </span>
 
-                        <h1 class="fw-bold text-success">
-                            100+
-                        </h1>
+                    <h2 class="fw-bold display-6 mt-3 mb-4">
+                        Meningkatkan Efisiensi Administrasi Akademik
+                    </h2>
 
-                        <p class="text-muted mb-0">
-                            Staff Akademik
-                        </p>
+                    <p class="text-muted mb-4">
+                        Sistem Universitas membantu universitas
+                        dalam mengelola data akademik secara terpusat,
+                        efisien, dan profesional.
+                    </p>
 
-                    </div>
+                    <div class="d-flex mb-3">
 
-                </div>
+                        <div class="me-3 text-primary fw-bold">
+                            ✓
+                        </div>
 
-                <div class="col-md-3">
-
-                    <div class="card border-0 shadow rounded-4 p-4">
-
-                        <h1 class="fw-bold text-warning">
-                            5000+
-                        </h1>
-
-                        <p class="text-muted mb-0">
-                            Mahasiswa
-                        </p>
+                        <div>
+                            Manajemen data fakultas lebih terstruktur
+                        </div>
 
                     </div>
 
-                </div>
+                    <div class="d-flex mb-3">
 
-                <div class="col-md-3">
+                        <div class="me-3 text-primary fw-bold">
+                            ✓
+                        </div>
 
-                    <div class="card border-0 shadow rounded-4 p-4">
-
-                        <h1 class="fw-bold text-danger">
-                            24/7
-                        </h1>
-
-                        <p class="text-muted mb-0">
-                            Akses Sistem
-                        </p>
+                        <div>
+                            Interface modern dan mudah digunakan
+                        </div>
 
                     </div>
+
+                    <div class="d-flex mb-4">
+
+                        <div class="me-3 text-primary fw-bold">
+                            ✓
+                        </div>
+
+                        <div>
+                            Sistem aman dan scalable
+                        </div>
+
+                    </div>
+
+                    <a href="/fakultas"
+                       class="btn btn-primary rounded-4 px-4 py-3">
+                        Jelajahi Sistem
+                    </a>
 
                 </div>
 
@@ -246,21 +288,22 @@
 
 
     {{-- CTA --}}
-    <section class="py-5 bg-dark text-white">
+    <section class="py-5 bg-primary text-white position-relative overflow-hidden">
 
-        <div class="container text-center">
+        <div class="container py-5 text-center position-relative">
 
-            <h2 class="fw-bold display-6 mb-4">
-                Mulai Kelola Data Fakultas Sekarang
+            <h2 class="display-5 fw-bold mb-4">
+                Mulai Digitalisasi Universitas Anda
             </h2>
 
-            <p class="lead text-light mb-4">
-                Tingkatkan efisiensi administrasi akademik universitas Anda
+            <p class="lead mb-5 text-light">
+                Tingkatkan kualitas administrasi akademik
+                dengan sistem yang modern dan profesional.
             </p>
 
             <a href="/fakultas/create"
-               class="btn btn-warning btn-lg rounded-4 px-5 shadow">
-                🚀 Mulai Sekarang
+               class="btn btn-light btn-lg rounded-4 px-5 shadow">
+                Mulai Sekarang
             </a>
 
         </div>
@@ -269,28 +312,49 @@
 
 
     {{-- FOOTER --}}
-    <footer class="bg-black text-light py-4">
+    <footer class="bg-dark text-light py-5">
 
         <div class="container">
 
-            <div class="row align-items-center">
+            <div class="row g-4 align-items-center">
 
-                <div class="col-md-6">
+                <div class="col-lg-6">
 
-                    <h5 class="fw-bold mb-1">
-                        🎓 Sistem Informasi Fakultas
-                    </h5>
+                    <h4 class="fw-bold mb-2">
+                        🎓 Sistem Universitas
+                    </h4>
 
-                    <small class="text-secondary">
-                        Laravel Academic Management System
-                    </small>
+                    <p class="text-secondary mb-0">
+                        Academic Management System berbasis Laravel
+                        untuk universitas modern.
+                    </p>
 
                 </div>
 
-                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                <div class="col-lg-6 text-lg-end">
+
+                    <div class="mb-2">
+
+                        <a href="/"
+                           class="text-decoration-none text-secondary me-3">
+                            Home
+                        </a>
+
+                        <a href="/fakultas"
+                           class="text-decoration-none text-secondary me-3">
+                            Fakultas
+                        </a>
+
+                        <a href="/fakultas/create"
+                           class="text-decoration-none text-secondary">
+                            Tambah Data
+                        </a>
+
+                    </div>
 
                     <small class="text-secondary">
-                        © {{ date('Y') }} All Rights Reserved
+                        © {{ date('Y') }} Sistem Universitas.
+                        All Rights Reserved.
                     </small>
 
                 </div>

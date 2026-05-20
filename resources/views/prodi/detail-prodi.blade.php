@@ -1,96 +1,158 @@
 <x-layout>
-    <div class="container py-5">
-        
-        <div class="row justify-content-center">
-            <div class="col-md-7">
 
-                <div class="card border-0 shadow-lg rounded-4">
+    <section class="bg-light min-vh-100 py-5 d-flex align-items-center">
 
-                    {{-- Header --}}
-                    <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
-                        <h2 class="fw-bold mb-1">
-                            📘 Detail Prodi
-                        </h2>
-                        <p class="mb-0 small">
-                            Informasi lengkap data Prodi
-                        </p>
-                    </div>
+        <div class="container">
 
-                    {{-- Body --}}
-                    <div class="card-body p-4">
+            <div class="row justify-content-center">
 
-                        <table class="table table-borderless align-middle">
-                            <tbody>
+                <div class="col-lg-7">
 
-                                <tr class="border-bottom">
-                                    <th width="35%" class="text-secondary fs-5">
-                                        Nama Prodi
-                                    </th>
-                                    <td width="5%" class="fw-bold">
-                                        :
-                                    </td>
-                                    <td class="fs-5 fw-semibold text-dark">
+                    <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
+
+                        {{-- HEADER --}}
+                        <div class="bg-primary bg-gradient text-white position-relative p-5">
+
+                            <div class="position-absolute top-0 end-0 opacity-10"
+                                 style="font-size:120px; margin-top:-10px; margin-right:20px;">
+                                🎓
+                            </div>
+
+                            <div class="d-flex align-items-center">
+
+                                <div class="bg-white text-primary rounded-circle d-flex justify-content-center align-items-center shadow me-4"
+                                     style="width:85px;height:85px;font-size:38px;">
+                                    📘
+                                </div>
+
+                                <div>
+
+                                    <h2 class="fw-bold mb-2">
+                                        Detail Program Studi
+                                    </h2>
+
+                                    <p class="mb-0 text-light">
+                                        Informasi lengkap data Program Studi
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        {{-- BODY --}}
+                        <div class="card-body p-5">
+
+                            {{-- ITEM --}}
+                            <div class="mb-4">
+
+                                <small class="text-uppercase text-muted fw-semibold">
+                                    Nama Program Studi
+                                </small>
+
+                                <div class="bg-light rounded-4 p-4 mt-2 shadow-sm">
+
+                                    <h4 class="fw-bold text-dark mb-0">
                                         {{ $prodi->nama_prodi }}
-                                    </td>
-                                </tr>
+                                    </h4>
 
-                                <tr class="border-bottom">
-                                    <th class="text-secondary fs-5">
-                                        Nama Kaprodi
-                                    </th>
-                                    <td class="fw-bold">
-                                        :
-                                    </td>
-                                    <td class="fs-5 fw-semibold text-dark">
+                                </div>
+
+                            </div>
+
+                            {{-- ITEM --}}
+                            <div class="mb-4">
+
+                                <small class="text-uppercase text-muted fw-semibold">
+                                    Ketua Program Studi
+                                </small>
+
+                                <div class="bg-light rounded-4 p-4 mt-2 shadow-sm">
+
+                                    <h4 class="fw-bold text-dark mb-0">
                                         {{ $prodi->nama_kaprodi }}
-                                    </td>
-                                </tr>
+                                    </h4>
 
-                                <tr>
-                                    <th class="text-secondary fs-5">
-                                        Alias / Kode
-                                    </th>
-                                    <td class="fw-bold">
-                                        :
-                                    </td>
-                                    <td class="fs-5 fw-semibold text-dark">
-                                        <span class="badge bg-secondary px-3 py-2 fs-6 rounded-3">
-                                            {{ $prodi->alias_prodi }}
-                                        </span>
-                                    </td>
-                                </tr>
+                                </div>
 
-                            </tbody>
-                        </table>
+                            </div>
 
-                        {{-- Tombol Navigasi --}}
-                        <div class="mt-4 d-flex gap-2">
+                            {{-- ITEM --}}
+                            <div class="mb-5">
 
-                            <a href="{{ route('prodi.index') }}" 
-                               class="btn btn-secondary rounded-3 px-4">
-                                ← Kembali
-                            </a>
+                                <small class="text-uppercase text-muted fw-semibold">
+                                    Alias / Kode Program Studi
+                                </small>
 
-                            <a href="{{ route('prodi.edit', $prodi->id) }}" 
-                               class="btn btn-warning rounded-3 px-4 text-white">
-                                ✏ Edit
-                            </a>
+                                <div class="bg-light rounded-4 p-4 mt-2 shadow-sm">
+
+                                    <span class="badge bg-primary fs-6 px-4 py-3 rounded-pill shadow-sm">
+
+                                        {{ $prodi->alias_prodi }}
+
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                            {{-- ACTION BUTTON --}}
+                            <div class="d-flex flex-wrap gap-3">
+
+                                <a href="{{ route('prodi.index') }}"
+                                   class="btn btn-outline-secondary rounded-4 px-4 py-3">
+
+                                    ← Kembali
+
+                                </a>
+
+                                <a href="{{ route('prodi.edit', $prodi->id) }}"
+                                   class="btn btn-warning text-white rounded-4 px-4 py-3 shadow">
+
+                                    ✏️ Edit Data
+
+                                </a>
+
+                                <form action="{{ route('prodi.destroy', $prodi->id) }}"
+                                      method="POST">
+
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit"
+                                            onclick="return confirm('Yakin ingin menghapus data ini?')"
+                                            class="btn btn-danger rounded-4 px-4 py-3 shadow-sm">
+
+                                        🗑️ Hapus
+
+                                    </button>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                        {{-- FOOTER --}}
+                        <div class="card-footer bg-white border-0 text-center py-4">
+
+                            <small class="text-muted">
+
+                                © {{ date('Y') }} Sistem Informasi Program Studi
+
+                            </small>
 
                         </div>
 
                     </div>
 
-                    {{-- Footer --}}
-                    <div class="card-footer bg-light text-center rounded-bottom-4">
-                        <small class="text-muted">
-                            Sistem Informasi Program Studi
-                        </small>
-                    </div>
-
                 </div>
 
             </div>
+
         </div>
 
-    </div>
+    </section>
+
 </x-layout>

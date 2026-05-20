@@ -1,141 +1,291 @@
 <x-layout>
-    <div class="container py-5">
 
-        {{-- Alert Notifikasi Sukses --}}
-        @if (session('success'))
-            <div class="alert alert-success alert-dismissible fade show rounded-3 shadow-sm mb-4" role="alert">
-                ✨ {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <section class="bg-light min-vh-100 py-5">
+
+        <div class="container">
+
+            {{-- SUCCESS ALERT --}}
+            @if (session('success'))
+
+                <div class="alert alert-success border-0 shadow-sm rounded-4 d-flex align-items-center justify-content-between px-4 py-3 mb-4">
+
+                    <div>
+                        ✅ {{ session('success') }}
+                    </div>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+
+            @endif
+
+            {{-- HEADER --}}
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-center mb-5 gap-3">
+
+                <div>
+
+                    <span class="text-primary fw-semibold text-uppercase">
+                        Dashboard Akademik
+                    </span>
+
+                    <h1 class="fw-bold display-6 mb-2">
+                        📚 Program Studi
+                    </h1>
+
+                    <p class="text-muted mb-0">
+                        Kelola seluruh data program studi universitas
+                        secara modern dan profesional
+                    </p>
+
+                </div>
+
+                {{-- BUTTON --}}
+                <a href="{{ route('prodi.create') }}"
+                   class="btn btn-primary btn-lg rounded-4 px-4 py-3 shadow fw-semibold">
+
+                    ➕ Tambah Program Studi
+
+                </a>
+
             </div>
-        @endif
 
-        {{-- Header --}}
-        <div class="d-flex justify-content-between align-items-center mb-4">
+            {{-- CARD --}}
+            <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
 
-            <div>
-                <h2 class="fw-bold text-primary mb-1">
-                    📚 List Program Studi
-                </h2>
+                {{-- TOP BAR --}}
+                <div class="bg-primary bg-gradient text-white p-4">
 
-                <p class="text-muted mb-0">
-                    Data seluruh program studi universitas
-                </p>
-            </div>
+                    <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
 
-            <a href="{{ route('prodi.create') }}" class="btn btn-primary rounded-3 shadow-sm">
-                + Tambah Prodi
-            </a>
+                        <div>
 
-        </div>
+                            <h4 class="fw-bold mb-1">
+                                Data Program Studi
+                            </h4>
 
-        {{-- Card --}}
-        <div class="card border-0 shadow-lg rounded-4">
+                            <small class="text-light">
+                                Informasi lengkap seluruh program studi
+                            </small>
 
-            <div class="card-body p-4">
+                        </div>
 
-                <div class="table-responsive">
+                        <div class="bg-white text-primary rounded-pill px-4 py-2 fw-semibold shadow-sm">
 
-                    <table class="table table-hover align-middle">
+                            Total :
+                            {{ $prodis->count() }} Prodi
 
-                        <thead class="table-primary">
-                            <tr>
-                                <th width="5%">No</th>
-                                <th>Nama Prodi</th>
-                                <th>Nama Kaprodi</th>
-                                <th>Alias / Kode</th>
-                                <th width="30%" class="text-center">Aksi</th>
-                            </tr>
-                        </thead>
+                        </div>
 
-                        <tbody>
+                    </div>
 
-                            @forelse ($prodis as $item)
+                </div>
 
-                                <tr>
+                {{-- BODY --}}
+                <div class="card-body p-4">
 
-                                    <td class="fw-semibold">
-                                        {{ $loop->iteration }}
-                                    </td>
+                    <div class="table-responsive">
 
-                                    <td>
-                                        <span class="fw-bold text-dark">
-                                            {{ $item->nama_prodi }}
-                                        </span>
-                                    </td>
+                        <table class="table align-middle table-hover">
 
-                                    <td>
-                                        {{ $item->nama_kaprodi }}
-                                    </td>
+                            <thead>
 
-                                    <td>
-                                        <span class="badge bg-secondary px-2 py-2 rounded-2">
-                                            {{ $item->alias_prodi }}
-                                        </span>
-                                    </td>
+                                <tr class="table-light">
 
-                                    <td class="text-center">
+                                    <th class="py-3 text-secondary">
+                                        #
+                                    </th>
 
-                                        <div class="d-flex justify-content-center gap-2">
+                                    <th class="py-3 text-secondary">
+                                        Program Studi
+                                    </th>
 
-                                            {{-- Detail --}}
-                                            <a href="{{ route('prodi.show', $item->id) }}"
-                                               class="btn btn-info btn-sm rounded-3 text-white">
-                                                👁 Detail
-                                            </a>
+                                    <th class="py-3 text-secondary">
+                                        Ketua Prodi
+                                    </th>
 
-                                            {{-- Edit --}}
-                                            <a href="{{ route('prodi.edit', $item->id) }}"
-                                               class="btn btn-warning btn-sm rounded-3 text-white">
-                                                ✏ Edit
-                                            </a>
+                                    <th class="py-3 text-secondary">
+                                        Alias
+                                    </th>
 
-                                            {{-- Hapus --}}
-                                            <form action="{{ route('prodi.destroy', $item->id) }}" 
-                                                  method="POST"
-                                                  onsubmit="return confirm('Yakin ingin menghapus data prodi ini?')">
-
-                                                @csrf
-                                                @method("DELETE")
-
-                                                <button type="submit"
-                                                        class="btn btn-danger btn-sm rounded-3">
-                                                    🗑 Hapus
-                                                </button>
-
-                                            </form>
-
-                                        </div>
-
-                                    </td>
+                                    <th class="py-3 text-center text-secondary">
+                                        Aksi
+                                    </th>
 
                                 </tr>
 
-                            @empty
+                            </thead>
 
-                                <tr>
-                                    <td colspan="5" class="text-center py-4 text-muted">
-                                        Data program studi belum tersedia
-                                    </td>
-                                </tr>
+                            <tbody>
 
-                            @endforelse
+                                @forelse ($prodis as $item)
 
-                        </tbody>
+                                    <tr>
 
-                    </table>
+                                        {{-- NUMBER --}}
+                                        <td class="fw-bold text-primary">
+                                            {{ $loop->iteration }}
+                                        </td>
+
+                                        {{-- PRODI --}}
+                                        <td>
+
+                                            <div class="d-flex align-items-center gap-3">
+
+                                                <div class="bg-primary-subtle text-primary rounded-circle d-flex justify-content-center align-items-center shadow-sm"
+                                                     style="width:50px;height:50px;">
+
+                                                    🎓
+
+                                                </div>
+
+                                                <div>
+
+                                                    <div class="fw-bold text-dark">
+
+                                                        {{ $item->nama_prodi }}
+
+                                                    </div>
+
+                                                    <small class="text-muted">
+
+                                                        Program Studi Universitas
+
+                                                    </small>
+
+                                                </div>
+
+                                            </div>
+
+                                        </td>
+
+                                        {{-- KAPRODI --}}
+                                        <td>
+
+                                            <span class="fw-semibold text-dark">
+
+                                                {{ $item->nama_kaprodi }}
+
+                                            </span>
+
+                                        </td>
+
+                                        {{-- ALIAS --}}
+                                        <td>
+
+                                            <span class="badge bg-dark rounded-pill px-3 py-2">
+
+                                                {{ $item->alias_prodi }}
+
+                                            </span>
+
+                                        </td>
+
+                                        {{-- ACTION --}}
+                                        <td>
+
+                                            <div class="d-flex justify-content-center flex-wrap gap-2">
+
+                                                {{-- DETAIL --}}
+                                                <a href="{{ route('prodi.show', $item->id) }}"
+                                                   class="btn btn-info text-white btn-sm rounded-pill px-3 shadow-sm">
+
+                                                    👁 Detail
+
+                                                </a>
+
+                                                {{-- EDIT --}}
+                                                <a href="{{ route('prodi.edit', $item->id) }}"
+                                                   class="btn btn-warning text-white btn-sm rounded-pill px-3 shadow-sm">
+
+                                                    ✏ Edit
+
+                                                </a>
+
+                                                {{-- DELETE --}}
+                                                <form action="{{ route('prodi.destroy', $item->id) }}"
+                                                      method="POST"
+                                                      onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+
+                                                    @csrf
+                                                    @method('DELETE')
+
+                                                    <button type="submit"
+                                                            class="btn btn-danger btn-sm rounded-pill px-3 shadow-sm">
+
+                                                        🗑 Hapus
+
+                                                    </button>
+
+                                                </form>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                @empty
+
+                                    <tr>
+
+                                        <td colspan="5"
+                                            class="text-center py-5">
+
+                                            <div class="d-flex flex-column align-items-center">
+
+                                                <div class="mb-3"
+                                                     style="font-size:60px;">
+
+                                                    📂
+
+                                                </div>
+
+                                                <h5 class="fw-bold text-muted">
+
+                                                    Belum Ada Data Prodi
+
+                                                </h5>
+
+                                                <p class="text-muted mb-0">
+
+                                                    Silakan tambahkan data program studi terlebih dahulu
+
+                                                </p>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                @endforelse
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+                {{-- FOOTER --}}
+                <div class="card-footer bg-white border-0 text-center py-4">
+
+                    <small class="text-muted">
+
+                        © {{ date('Y') }} Sistem Informasi Program Studi
+
+                    </small>
 
                 </div>
 
             </div>
 
-            {{-- Footer --}}
-            <div class="card-footer bg-light text-center rounded-bottom-4">
-                <small class="text-muted">
-                    Sistem Informasi Program Studi
-                </small>
-            </div>
-
         </div>
 
-    </div>
+    </section>
+
 </x-layout>

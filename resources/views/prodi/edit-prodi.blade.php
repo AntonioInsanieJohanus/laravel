@@ -1,120 +1,212 @@
 <x-layout>
-    <div class="container py-5">
 
-        <div class="row justify-content-center">
-            <div class="col-md-6">
+    <section class="bg-light min-vh-100 py-5 d-flex align-items-center">
 
-                <div class="card border-0 shadow-lg rounded-4">
+        <div class="container">
 
-                    {{-- Header --}}
-                    <div class="card-header bg-warning text-dark text-center py-4 rounded-top-4">
-                        <h2 class="fw-bold mb-1">
-                            ✏ Edit Program Studi
-                        </h2>
+            <div class="row justify-content-center">
 
-                        <p class="mb-0 small text-muted">
-                            Perbarui informasi data program studi
-                        </p>
-                    </div>
+                <div class="col-lg-6 col-md-8">
 
-                    {{-- Body --}}
-                    <div class="card-body p-4">
+                    <div class="card border-0 shadow-lg rounded-5 overflow-hidden">
 
-                        @if ($errors->any())
-                            <div class="alert alert-danger rounded-3">
-                                <ul class="mb-0">
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                        {{-- HEADER --}}
+                        <div class="bg-warning bg-gradient text-dark p-5 position-relative">
 
-                        <form action="{{ route('prodi.update', $prodi->id) }}" method="POST">
-                            @csrf
-                            @method("PUT")
-
-                            {{-- Nama Prodi --}}
-                            <div class="mb-4">
-                                <label for="nama_prodi" class="form-label fw-semibold">
-                                    Nama Prodi
-                                </label>
-                                <input 
-                                    type="text"
-                                    id="nama_prodi"
-                                    name="nama_prodi"
-                                    class="form-control form-control-lg rounded-3 @error('nama_prodi') is-invalid @enderror"
-                                    placeholder="Masukkan nama prodi"
-                                    value="{{ old('nama_prodi', $prodi->nama_prodi) }}"
-                                >
+                            <div class="position-absolute top-0 end-0 opacity-10"
+                                 style="font-size:120px; margin-top:-10px; margin-right:20px;">
+                                ✏️
                             </div>
 
-                            {{-- Nama Kaprodi --}}
-                            <div class="mb-4">
-                                <label for="nama_kaprodi" class="form-label fw-semibold">
-                                    Nama Kaprodi
-                                </label>
-                                <input 
-                                    type="text"
-                                    id="nama_kaprodi"
-                                    name="nama_kaprodi"
-                                    class="form-control form-control-lg rounded-3 @error('nama_kaprodi') is-invalid @enderror"
-                                    placeholder="Masukkan nama kaprodi"
-                                    value="{{ old('nama_kaprodi', $prodi->nama_kaprodi) }}"
-                                >
+                            <div class="d-flex align-items-center">
+
+                                <div class="bg-white text-warning rounded-circle d-flex justify-content-center align-items-center shadow me-4"
+                                     style="width:85px;height:85px;font-size:38px;">
+
+                                    📘
+
+                                </div>
+
+                                <div>
+
+                                    <h2 class="fw-bold mb-2">
+                                        Edit Program Studi
+                                    </h2>
+
+                                    <p class="mb-0 text-dark-emphasis">
+                                        Perbarui informasi Program Studi
+                                    </p>
+
+                                </div>
+
                             </div>
 
-                            {{-- Alias Prodi --}}
-                            <div class="mb-4">
-                                <label for="alias_prodi" class="form-label fw-semibold">
-                                    Pilih Kode/Alias Prodi
-                                </label>
-                                <select 
-                                    name="alias_prodi" 
-                                    id="alias_prodi" 
-                                    class="form-select form-select-lg rounded-3 @error('alias_prodi') is-invalid @enderror"
-                                >
+                        </div>
+
+                        {{-- BODY --}}
+                        <div class="card-body p-5">
+
+                            {{-- ERROR --}}
+                            @if ($errors->any())
+
+                                <div class="alert alert-danger border-0 rounded-4 shadow-sm">
+
+                                    <div class="fw-bold mb-2">
+                                        Terjadi Kesalahan:
+                                    </div>
+
+                                    <ul class="mb-0 ps-3">
+
+                                        @foreach ($errors->all() as $error)
+
+                                            <li>{{ $error }}</li>
+
+                                        @endforeach
+
+                                    </ul>
+
+                                </div>
+
+                            @endif
+
+                            {{-- FORM --}}
+                            <form action="{{ route('prodi.update', $prodi->id) }}"
+                                  method="POST">
+
+                                @csrf
+                                @method('PUT')
+
+                                {{-- NAMA PRODI --}}
+                                <div class="mb-4">
+
+                                    <label for="nama_prodi"
+                                           class="form-label fw-semibold text-dark">
+
+                                        Nama Program Studi
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nama_prodi"
+                                        name="nama_prodi"
+                                        class="form-control form-control-lg rounded-4 border-0 shadow-sm @error('nama_prodi') is-invalid @enderror"
+                                        placeholder="Masukkan nama program studi"
+                                        value="{{ old('nama_prodi', $prodi->nama_prodi) }}"
+                                    >
+
+                                </div>
+
+                                {{-- NAMA KAPRODI --}}
+                                <div class="mb-4">
+
+                                    <label for="nama_kaprodi"
+                                           class="form-label fw-semibold text-dark">
+
+                                        Nama Ketua Program Studi
+
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="nama_kaprodi"
+                                        name="nama_kaprodi"
+                                        class="form-control form-control-lg rounded-4 border-0 shadow-sm @error('nama_kaprodi') is-invalid @enderror"
+                                        placeholder="Masukkan nama kaprodi"
+                                        value="{{ old('nama_kaprodi', $prodi->nama_kaprodi) }}"
+                                    >
+
+                                </div>
+
+                                {{-- ALIAS --}}
+                                <div class="mb-5">
+
+                                    <label for="alias_prodi"
+                                           class="form-label fw-semibold text-dark">
+
+                                        Pilih Alias / Kode Prodi
+
+                                    </label>
+
                                     @php
                                         $currentAlias = old('alias_prodi', $prodi->alias_prodi);
                                     @endphp
-                                    <option value="SI" {{ $currentAlias == 'SI' ? 'selected' : '' }}>Sistem Informasi</option>
-                                    <option value="TI" {{ $currentAlias == 'TI' ? 'selected' : '' }}>Teknik Informatika</option>
-                                    <option value="SK" {{ $currentAlias == 'SK' ? 'selected' : '' }}>Sistem Komputer</option>
-                                </select>
-                            </div>
 
-                            {{-- Tombol Aksi --}}
-                            <div class="d-flex gap-2">
+                                    <select
+                                        name="alias_prodi"
+                                        id="alias_prodi"
+                                        class="form-select form-select-lg rounded-4 border-0 shadow-sm @error('alias_prodi') is-invalid @enderror"
+                                    >
 
-                                <a href="{{ route('prodi.index') }}" 
-                                   class="btn btn-secondary rounded-3 px-4">
-                                    ← Kembali
-                                </a>
+                                        <option value="SI"
+                                            {{ $currentAlias == 'SI' ? 'selected' : '' }}>
 
-                                <button 
-                                    type="submit"
-                                    class="btn btn-warning text-white rounded-3 px-4 shadow-sm"
-                                >
-                                    💾 Update Data
-                                </button>
+                                            Sistem Informasi (SI)
 
-                            </div>
+                                        </option>
 
-                        </form>
+                                        <option value="TI"
+                                            {{ $currentAlias == 'TI' ? 'selected' : '' }}>
 
-                    </div>
+                                            Teknik Informatika (TI)
 
-                    {{-- Footer --}}
-                    <div class="card-footer bg-light text-center rounded-bottom-4">
-                        <small class="text-muted">
-                            Sistem Informasi Program Studi
-                        </small>
+                                        </option>
+
+                                        <option value="SK"
+                                            {{ $currentAlias == 'SK' ? 'selected' : '' }}>
+
+                                            Sistem Komputer (SK)
+
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                {{-- BUTTON --}}
+                                <div class="d-flex flex-wrap gap-3">
+
+                                    <a href="{{ route('prodi.index') }}"
+                                       class="btn btn-outline-secondary rounded-4 px-4 py-3">
+
+                                        ← Kembali
+
+                                    </a>
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-warning text-white rounded-4 px-5 py-3 shadow fw-semibold"
+                                    >
+
+                                        💾 Update Data
+
+                                    </button>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                        {{-- FOOTER --}}
+                        <div class="card-footer bg-white border-0 text-center py-4">
+
+                            <small class="text-muted">
+
+                                © {{ date('Y') }} Sistem Informasi Program Studi
+
+                            </small>
+
+                        </div>
+
                     </div>
 
                 </div>
 
             </div>
+
         </div>
 
-    </div>
+    </section>
+
 </x-layout>
